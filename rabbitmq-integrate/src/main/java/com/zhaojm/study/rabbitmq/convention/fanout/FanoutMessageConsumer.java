@@ -7,7 +7,6 @@ import com.rabbitmq.client.DeliverCallback;
 import com.zhaojm.study.rabbitmq.convention.utils.RabbitUtil;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
 /**
