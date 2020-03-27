@@ -1,4 +1,4 @@
-package com.zhaojm.study.rabbitmq.spring.bean;
+package com.zhaojm.study.rabbitmq.bean;
 
 import lombok.*;
 

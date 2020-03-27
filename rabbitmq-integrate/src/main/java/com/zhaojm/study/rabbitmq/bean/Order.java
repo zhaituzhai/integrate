@@ -1,4 +1,4 @@
-package com.zhaojm.study.rabbitmq.spring.bean;
+package com.zhaojm.study.rabbitmq.bean;
 
 import lombok.*;
 
@@ -12,6 +12,7 @@ import java.util.Date;
 @Setter
 @Getter
 @Builder
+@NoArgsConstructor
 @ToString(of = {"orderNo", "orderDate", "payMoney", "username"})
 public class Order {
     private String orderNo;

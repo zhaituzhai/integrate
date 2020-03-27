@@ -1,0 +1,37 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: 1234
+    #开启消息确认模式
+    publisher-confirm-type: correlated
+    #开启消息可达监听
+    publisher-returns: true
+    #开启不可达消息不会被broker给删除
+    template:
+      mandatory: true
+    #设置连接超时
+    connection-timeout: 1000
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 10
+
+
+
+study.rabbitmq.queue:
+  queueName: tulingBootQueue3
+  durable: true
+  autoDelete: false
+  exclusive: false
+
+study.rabbitmq:
+  exchange:
+    name: springboot.direct.exchange
+    type: direct
+    autoDelete: false
+    durable: true
+  routing:
+    key: springboot.key3

@@ -2,10 +2,7 @@ package com.zhaojm.study.rabbitmq.spring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +39,13 @@ public class RabbitAdminTest {
         rabbitAdmin.declareBinding(BindingBuilder.bind(queue).to(topicExchange).with(routingKey));
     }
 
-
+    @Test
+    public void testDirectExchange() {
+        DirectExchange directExchange = new DirectExchange("rabbit-admin.direct.exchange",true,false);
+        rabbitAdmin.declareExchange(directExchange);
+        Queue queue = new Queue("rabbit-admin.direct.queue",true);
+        rabbitAdmin.declareQueue(queue);
+        rabbitAdmin.declareBinding(BindingBuilder.bind(queue).to(directExchange).with("rabbit-admin.key.#"));
+    }
 
 }
