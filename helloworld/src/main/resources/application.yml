@@ -8,3 +8,6 @@ spring:
       exclude: static/**
 server:
   port: 8180
+
+logging:
+  config: classpath:logback-spring.xml
