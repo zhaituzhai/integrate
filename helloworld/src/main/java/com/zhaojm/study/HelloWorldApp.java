@@ -1,8 +1,10 @@
 package com.zhaojm.study;
 
+import com.zhaojm.study.config.swagger.SwaggerConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 // @RestController
 // 启动 Spring boot 的自动装配
 @SpringBootApplication
+@Import(SwaggerConfig.class)
 public class HelloWorldApp {
 
     /*@RequestMapping("/")
