@@ -12,6 +12,11 @@
     <artifactId>helloworld</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.zhaojm.study</groupId>
+            <artifactId>integrate-frame</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -37,16 +42,12 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <version>5.1.47</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zhaojm.study</groupId>
-            <artifactId>integrate-frame</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 

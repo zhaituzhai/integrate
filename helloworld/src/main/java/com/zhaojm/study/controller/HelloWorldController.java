@@ -29,6 +29,7 @@ public class HelloWorldController {
         return "basic version 0.1";
     }
 
+//    @GetMapping
     @GetMapping(path = "/user")
     @ApiOperation("根据Id取值用户信息")
     public UserInfoDTO getUserInfoById(@RequestParam(value = "id") @ApiParam Integer id){
