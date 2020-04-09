@@ -6,10 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhaojm
@@ -26,11 +23,10 @@ public class HelloWorldController {
     @GetMapping(path = "/version")
     @ApiOperation("版本号")
     public String getVersion(){
-        return "basic version 0.1";
+        return "basic version 0.1 - zhaojm";
     }
 
-//    @GetMapping
-    @GetMapping(path = "/user")
+    @GetMapping
     @ApiOperation("根据Id取值用户信息")
     public UserInfoDTO getUserInfoById(@RequestParam(value = "id") @ApiParam Integer id){
         return userInfoService.getUserInfoById(id);
