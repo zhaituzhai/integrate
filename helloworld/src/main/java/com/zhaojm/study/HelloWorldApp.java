@@ -2,11 +2,8 @@ package com.zhaojm.study;
 
 import com.zhaojm.study.config.swagger.SwaggerConfig;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
@@ -21,11 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @Import(SwaggerConfig.class)
 public class HelloWorldApp {
-
-    /*@RequestMapping("/")
-    public String home(){
-        return "hello world";
-    }*/
 
     public static void main(String[] args) {
         // 完全禁用重新启动支持

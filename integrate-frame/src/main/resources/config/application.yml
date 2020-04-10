@@ -1,0 +1,8 @@
+logging:
+  config: classpath:config/logback-spring.xml
+  file:
+    path: /integrate/logs
+  level:
+    org.springframework: info
+
+

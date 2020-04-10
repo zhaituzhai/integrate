@@ -9,5 +9,6 @@ spring:
 server:
   port: 8180
 
-logging:
-  config: classpath:logback-spring.xml
+# 日志
+#logging.level:
+#  com.zhaojm.study: debug

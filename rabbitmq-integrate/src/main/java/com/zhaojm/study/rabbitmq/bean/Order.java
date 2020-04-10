@@ -12,7 +12,6 @@ import java.util.Date;
 @Setter
 @Getter
 @Builder
-@NoArgsConstructor
 @ToString(of = {"orderNo", "orderDate", "payMoney", "username"})
 public class Order {
     private String orderNo;
