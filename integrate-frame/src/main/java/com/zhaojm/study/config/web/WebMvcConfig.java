@@ -8,10 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * @author zhaojm
@@ -31,12 +29,13 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    @Override
-    protected void configureViewResolvers(ViewResolverRegistry registry) {
-        // 处理"redirect:url"字符串
-        registry.enableContentNegotiation();
-        registry.viewResolver(new InternalResourceViewResolver());
-    }
+    // 默认空白404.html 页面
+    // @Override
+    // protected void configureViewResolvers(ViewResolverRegistry registry) {
+    //     // 处理"redirect:url"字符串
+    //     registry.enableContentNegotiation();
+    //     registry.viewResolver(new InternalResourceViewResolver());
+    // }
 
     @Bean
     public HttpMessageConverters fastJsonHttpMessageConverters() {
