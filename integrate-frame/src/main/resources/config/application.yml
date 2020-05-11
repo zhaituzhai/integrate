@@ -6,3 +6,5 @@ logging:
     org.springframework: info
 
 
+
+jasypt.encryptor.password: password
