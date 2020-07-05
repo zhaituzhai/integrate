@@ -1,21 +1,22 @@
-package com.zhaojm.study.security.configure;
+package com.zhaojm.study.config.web;
 
-import com.zhaojm.study.security.intercept.SimpleAuthenticationInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zhaojm.study.login.intercept.SimpleAuthenticationInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
+import javax.annotation.Resource;
+
 /**
  * @author zhaojm
- * @date 2020/7/1 23:52
+ * @date 2020/7/5 23:13
  */
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
-
-    @Autowired
+    @Resource
     private SimpleAuthenticationInterceptor simpleAuthenticationInterceptor;
+
 
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -28,6 +29,6 @@ public class WebConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(simpleAuthenticationInterceptor).addPathPatterns("/r/**");
+        registry.addInterceptor(simpleAuthenticationInterceptor).addPathPatterns("/systemUserInfo/**");
     }
 }

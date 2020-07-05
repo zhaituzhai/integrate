@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaojm.study.login.dao.SystemUserInfoDao">
+
+    <resultMap type="com.zhaojm.study.login.entity.SystemUserInfo" id="SystemUserInfoMap">
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userPassword" column="user_password" jdbcType="VARCHAR"/>
+        <result property="userNickName" column="user_nick_name" jdbcType="VARCHAR"/>
+        <result property="userGender" column="user_gender" jdbcType="INTEGER"/>
+        <result property="userEmail" column="user_email" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="userQq" column="user_qq" jdbcType="VARCHAR"/>
+        <result property="userAvatar" column="user_avatar" jdbcType="VARCHAR"/>
+        <result property="userType" column="user_type" jdbcType="INTEGER"/>
+        <result property="registerIp" column="register_ip" jdbcType="VARCHAR"/>
+        <result property="lastLoginIp" column="last_login_ip" jdbcType="VARCHAR"/>
+        <result property="lastLoginTime" column="last_login_time" jdbcType="TIMESTAMP"/>
+        <result property="loginCount" column="login_count" jdbcType="INTEGER"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="result">
+        user_id, user_name, user_password, user_nick_name, user_gender, user_email, user_phone, user_qq, user_avatar, user_type, register_ip, last_login_ip, last_login_time, login_count, remark, status, create_time, update_time
+    </sql>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="SystemUserInfoMap">
+        select
+          <include refid="result"/>
+        from test_self.system_user_info
+        where user_id = #{userId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SystemUserInfoMap">
+        select
+          <include refid="result"/>
+        from test_self.system_user_info
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SystemUserInfoMap">
+        select
+          <include refid="result"/>
+        from test_self.system_user_info
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                and user_password = #{userPassword}
+            </if>
+            <if test="userNickName != null and userNickName != ''">
+                and user_nick_name = #{userNickName}
+            </if>
+            <if test="userGender != null">
+                and user_gender = #{userGender}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                and user_email = #{userEmail}
+            </if>
+            <if test="userPhone != null and userPhone != ''">
+                and user_phone = #{userPhone}
+            </if>
+            <if test="userQq != null and userQq != ''">
+                and user_qq = #{userQq}
+            </if>
+            <if test="userAvatar != null and userAvatar != ''">
+                and user_avatar = #{userAvatar}
+            </if>
+            <if test="userType != null">
+                and user_type = #{userType}
+            </if>
+            <if test="registerIp != null and registerIp != ''">
+                and register_ip = #{registerIp}
+            </if>
+            <if test="lastLoginIp != null and lastLoginIp != ''">
+                and last_login_ip = #{lastLoginIp}
+            </if>
+            <if test="lastLoginTime != null">
+                and last_login_time = #{lastLoginTime}
+            </if>
+            <if test="loginCount != null">
+                and login_count = #{loginCount}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+    <select id="queryByUserName" resultMap="SystemUserInfoMap" parameterType="java.lang.String">
+        select
+        <include refid="result"/>
+        from test_self.system_user_info
+        where user_name = #{userName} and status = 1
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="userId" useGeneratedKeys="true">
+        insert into test_self.system_user_info(user_name, user_password, user_nick_name, user_gender, user_email, user_phone, user_qq, user_avatar, user_type, register_ip, last_login_ip, last_login_time, login_count, remark, status, create_time, update_time)
+        values (#{userName}, #{userPassword}, #{userNickName}, #{userGender}, #{userEmail}, #{userPhone}, #{userQq}, #{userAvatar}, #{userType}, #{registerIp}, #{lastLoginIp}, #{lastLoginTime}, #{loginCount}, #{remark}, #{status}, #{createTime}, #{updateTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update test_self.system_user_info
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password = #{userPassword},
+            </if>
+            <if test="userNickName != null and userNickName != ''">
+                user_nick_name = #{userNickName},
+            </if>
+            <if test="userGender != null">
+                user_gender = #{userGender},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                user_email = #{userEmail},
+            </if>
+            <if test="userPhone != null and userPhone != ''">
+                user_phone = #{userPhone},
+            </if>
+            <if test="userQq != null and userQq != ''">
+                user_qq = #{userQq},
+            </if>
+            <if test="userAvatar != null and userAvatar != ''">
+                user_avatar = #{userAvatar},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType},
+            </if>
+            <if test="registerIp != null and registerIp != ''">
+                register_ip = #{registerIp},
+            </if>
+            <if test="lastLoginIp != null and lastLoginIp != ''">
+                last_login_ip = #{lastLoginIp},
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time = #{lastLoginTime},
+            </if>
+            <if test="loginCount != null">
+                login_count = #{loginCount},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from test_self.system_user_info where user_id = #{userId}
+    </delete>
+
+</mapper>
