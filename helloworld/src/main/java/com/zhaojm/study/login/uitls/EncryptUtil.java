@@ -1,6 +1,5 @@
 package com.zhaojm.study.login.uitls;
 
-import com.zhaojm.study.login.common.SystemConst;
 import org.springframework.util.Base64Utils;
 
 import java.math.BigInteger;

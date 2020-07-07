@@ -1,5 +1,5 @@
 mybatis:
-  mapper-locations: classpath*:/mybatis/*Mapper.xml
+  mapper-locations: classpath*:/mybatis/*Mapper.xml,classpath*:/mybatis/*Dao.xml
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

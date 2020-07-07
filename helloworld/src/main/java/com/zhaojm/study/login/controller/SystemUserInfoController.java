@@ -1,7 +1,6 @@
 package com.zhaojm.study.login.controller;
 
 import com.zhaojm.study.login.common.ResultDto;
-import com.zhaojm.study.login.common.SystemConst;
 import com.zhaojm.study.login.entity.SystemUserInfo;
 import com.zhaojm.study.login.service.SystemUserInfoService;
 import io.swagger.annotations.Api;
@@ -10,8 +9,6 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**

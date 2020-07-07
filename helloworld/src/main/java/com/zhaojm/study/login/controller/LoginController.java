@@ -1,7 +1,6 @@
 package com.zhaojm.study.login.controller;
 
 import com.zhaojm.study.login.common.ResultDto;
-import com.zhaojm.study.login.common.SystemConst;
 import com.zhaojm.study.login.dto.LoginInfo;
 import com.zhaojm.study.login.entity.SystemUserInfo;
 import com.zhaojm.study.login.service.SystemUserInfoService;
@@ -17,13 +16,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static com.zhaojm.study.login.common.SystemConst.SESSION_USER;
+import static com.zhaojm.study.config.common.SystemConst.SESSION_USER;
 
 /**
  * @author zhaojm
  * @date 2020/7/5 10:38
  */
 @RestController
+@RequestMapping
 @Api(value = "用户登录操作", tags = "用户操作")
 public class LoginController {
 

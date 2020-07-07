@@ -7,9 +7,12 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+import javax.annotation.Resource;
 
 /**
  * @author zhaojm
@@ -17,6 +20,10 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
+
+    @Resource
+    private SystemAuthenticationInterceptor systemAuthenticationInterceptor;
+
     @Override
     protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {
         return new IntegrateRequestMappingHandlerMapping();
@@ -48,10 +55,13 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
         //3、在convert中添加配置信息.
         fastConverter.setFastJsonConfig(fastJsonConfig);
-
-
         HttpMessageConverter<?> converter = fastConverter;
         return new HttpMessageConverters(converter);
+    }
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(systemAuthenticationInterceptor).excludePathPatterns("/login/**");
     }
 
 }
