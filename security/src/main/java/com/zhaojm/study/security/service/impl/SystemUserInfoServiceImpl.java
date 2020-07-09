@@ -1,12 +1,12 @@
-package com.zhaojm.study.login.service.impl;
+package com.zhaojm.study.security.service.impl;
 
 import com.zhaojm.study.config.common.BusException;
 import com.zhaojm.study.config.common.ErrorEnum;
-import com.zhaojm.study.login.dto.LoginInfo;
-import com.zhaojm.study.login.entity.SystemUserInfo;
-import com.zhaojm.study.login.dao.SystemUserInfoDao;
-import com.zhaojm.study.login.service.SystemUserInfoService;
 import com.zhaojm.study.login.uitls.EncryptUtil;
+import com.zhaojm.study.security.dao.SystemUserInfoDao;
+import com.zhaojm.study.security.dto.LoginInfo;
+import com.zhaojm.study.security.entity.SystemUserInfo;
+import com.zhaojm.study.security.service.SystemUserInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,7 +18,7 @@ import java.util.*;
  * @author makejava
  * @since 2020-07-05 10:35:20
  */
-@Service("systemUserInfoService")
+@Service
 public class SystemUserInfoServiceImpl implements SystemUserInfoService {
     @Resource
     private SystemUserInfoDao userInfoDao;

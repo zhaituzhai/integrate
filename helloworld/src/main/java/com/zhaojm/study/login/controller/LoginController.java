@@ -1,6 +1,6 @@
 package com.zhaojm.study.login.controller;
 
-import com.zhaojm.study.login.common.ResultDto;
+import com.zhaojm.study.config.common.ResultDto;
 import com.zhaojm.study.login.dto.LoginInfo;
 import com.zhaojm.study.login.entity.SystemUserInfo;
 import com.zhaojm.study.login.service.SystemUserInfoService;

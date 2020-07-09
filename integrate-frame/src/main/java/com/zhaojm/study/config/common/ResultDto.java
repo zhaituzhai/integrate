@@ -1,4 +1,4 @@
-package com.zhaojm.study.login.common;
+package com.zhaojm.study.config.common;
 
 import java.io.Serializable;
 

@@ -1,11 +1,11 @@
 package com.zhaojm.study.security.configure;
 
-import com.zhaojm.study.security.intercept.SimpleAuthenticationInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zhaojm.study.config.web.IntegrateRequestMappingHandlerMapping;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
  * @author zhaojm
@@ -14,20 +14,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
 
-    @Autowired
-    private SimpleAuthenticationInterceptor simpleAuthenticationInterceptor;
-
     @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/")
-                .addResourceLocations("classpath:/resources/")
-                .addResourceLocations("classpath:/public/");
-        super.addResourceHandlers(registry);
+    protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {
+        return new IntegrateRequestMappingHandlerMapping();
     }
 
     @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(simpleAuthenticationInterceptor).addPathPatterns("/r/**");
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+    @Override
+    protected void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("redirect:login");
     }
 }

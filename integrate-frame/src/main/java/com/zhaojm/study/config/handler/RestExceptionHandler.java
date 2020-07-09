@@ -1,8 +1,8 @@
-package com.zhaojm.study.login.config;
+package com.zhaojm.study.config.handler;
 
-import com.zhaojm.study.login.common.BusException;
-import com.zhaojm.study.login.common.ErrorEnum;
-import com.zhaojm.study.login.common.ResultDto;
+import com.zhaojm.study.config.common.BusException;
+import com.zhaojm.study.config.common.ErrorEnum;
+import com.zhaojm.study.config.common.ResultDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

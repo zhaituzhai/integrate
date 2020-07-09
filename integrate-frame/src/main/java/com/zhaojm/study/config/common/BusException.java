@@ -1,4 +1,4 @@
-package com.zhaojm.study.login.common;
+package com.zhaojm.study.config.common;
 
 /**
  * 业务统一异常
